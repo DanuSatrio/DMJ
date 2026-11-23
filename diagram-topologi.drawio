@@ -1,0 +1,86 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="topologi-telemetry" name="Arsitektur Rekonstruksi">
+    <mxGraphModel dx="1651" dy="748" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=6;fontSize=13;" value="&lt;b&gt;Host fisik&lt;/b&gt; (laptop Windows)" vertex="1">
+          <mxGeometry height="960" width="1360" x="20" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=0;fillColor=#ffffff;strokeColor=#999999;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=6;fontSize=13;" value="&lt;b&gt;&lt;font color=&quot;#C77700&quot;&gt;WSL2 Ubuntu (Tahap 2, 3, 6)&lt;/font&gt;&lt;/b&gt; &amp;nbsp;|&amp;nbsp; Rencana Tahap 7: &lt;font color=&quot;#1F5FA8&quot;&gt;VM VirtualBox 6.1.40, Linux Mint 20.2, 4 core, RAM 8 GB&lt;/font&gt;&amp;nbsp;(spesifikasi paper)" vertex="1">
+          <mxGeometry height="890" width="1320" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=6;fontSize=13;" value="&lt;b&gt;Docker Engine&lt;/b&gt; &lt;font color=&quot;#1F5FA8&quot;&gt;(paper: 20.10.21)&lt;/font&gt; &lt;font color=&quot;#C77700&quot;&gt;(WSL: 29.10.0)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="820" width="1280" x="60" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" parent="1" style="rounded=0;fillColor=#ffffff;strokeColor=#6c8ebf;dashed=1;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=6;fontSize=13;" value="&lt;b&gt;Containerlab 0.42.0&lt;/b&gt; - lab &amp;quot;telemetry&amp;quot; &lt;font color=&quot;#1F5FA8&quot;&gt;(Layer 2 BGP EVPN VXLAN, 3 node Nokia SR Linux)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="560" width="1240" x="80" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacingLeft=10;fontSize=12;" value="&lt;b&gt;Legenda warna&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#1F5FA8&quot;&gt;Biru/hitam = berasal dari paper&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;Oranye = asumsi/keputusan kelompok atau deviasi&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="330" x="100" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=12;" value="&lt;b&gt;Routing (asumsi kelompok)&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;Underlay: eBGP leaf-spine, loopback saling diumumkan&lt;br&gt;Overlay: BGP EVPN loopback ke loopback, spine1 = route server (verifikasi di tahap 3)&lt;br&gt;gNMI :57400 | SNMP v2c public | sFlow ke sFlow-RT :6343&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="340" x="960" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;" value="&lt;b&gt;spine1&lt;/b&gt; &lt;font color=&quot;#1F5FA8&quot;&gt;(Nokia SR Linux, paper 23.2.2)&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;dipakai: 23.3.1&lt;br&gt;AS 65000 | lo system0 10.0.0.100/32&lt;br&gt;mgmt 172.80.80.11&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="280" x="560" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;" value="&lt;b&gt;leaf1&lt;/b&gt; (VTEP) &lt;font color=&quot;#1F5FA8&quot;&gt;Nokia SR Linux&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;23.3.1&lt;br&gt;AS 65001 | lo system0 10.0.0.1/32&lt;br&gt;mgmt 172.80.80.12&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="280" x="180" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;" value="&lt;b&gt;leaf2&lt;/b&gt; (VTEP) &lt;font color=&quot;#1F5FA8&quot;&gt;Nokia SR Linux&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;23.3.1&lt;br&gt;AS 65002 | lo system0 10.0.0.2/32&lt;br&gt;mgmt 172.80.80.13&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="280" x="940" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;" value="&lt;b&gt;client1&lt;/b&gt; (sumber trafik) &lt;font color=&quot;#1F5FA8&quot;&gt;network-multitool, iperf3&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;eth1 192.168.100.1/24, MTU 9000&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="280" x="180" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;" value="&lt;b&gt;client2&lt;/b&gt; (tujuan trafik) &lt;font color=&quot;#1F5FA8&quot;&gt;network-multitool, iperf3 server&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;eth1 192.168.100.2/24, MTU 9000&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="280" x="940" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" edge="1" parent="1" source="c8" style="endArrow=none;html=1;strokeWidth=2;labelBackgroundColor=#ffffff;fontSize=11;" target="c9" value="&lt;font color=&quot;#C77700&quot;&gt;e1-1 &amp;#8596; e1-1&lt;br&gt;192.168.11.0/30 (spine .2, leaf1 .1)&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c14" edge="1" parent="1" source="c8" style="endArrow=none;html=1;strokeWidth=2;labelBackgroundColor=#ffffff;fontSize=11;" target="c10" value="&lt;font color=&quot;#C77700&quot;&gt;e1-2 &amp;#8596; e1-1&lt;br&gt;192.168.12.0/30 (spine .2, leaf2 .1)&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c15" edge="1" parent="1" source="c9" style="endArrow=none;html=1;strokeWidth=2;labelBackgroundColor=#ffffff;fontSize=11;" target="c11" value="&lt;font color=&quot;#C77700&quot;&gt;e1-10 &amp;#8596; eth1&lt;br&gt;LAN 192.168.100.0/24&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c16" edge="1" parent="1" source="c10" style="endArrow=none;html=1;strokeWidth=2;labelBackgroundColor=#ffffff;fontSize=11;" target="c12" value="&lt;font color=&quot;#C77700&quot;&gt;e1-10 &amp;#8596; eth1&lt;br&gt;LAN 192.168.100.0/24&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c17" edge="1" parent="1" source="c9" style="endArrow=classic;startArrow=classic;html=1;dashed=1;strokeWidth=2;labelBackgroundColor=#ffffff;fontSize=11;" target="c10" value="&lt;font color=&quot;#C77700&quot;&gt;&lt;b&gt;VXLAN tunnel&lt;/b&gt; leaf1 &amp;#8596; leaf2 (via spine1)&lt;br&gt;VNI 1000 | EVI 111 | RT target:100:111&lt;br&gt;MAC-VRF mac-vrf-1&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c18" edge="1" parent="1" source="c11" style="endArrow=classic;html=1;dashed=1;strokeWidth=2;labelBackgroundColor=#ffffff;fontSize=11;" target="c12" value="&lt;font color=&quot;#1F5FA8&quot;&gt;&lt;b&gt;iperf3 UDP 25 Mbps&lt;/b&gt; (client1 &amp;#8594; client2)&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;payload 1400 B, lewat overlay VXLAN&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=12;" value="&lt;b&gt;Jaringan manajemen Docker &amp;quot;clab&amp;quot; - 172.80.80.0/24&lt;/b&gt; &lt;font color=&quot;#C77700&quot;&gt;(spine1 .11, leaf1 .12, leaf2 .13, client otomatis, monitoring stack tersambung di sini)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="1200" x="100" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="c20" edge="1" parent="1" source="c5" style="endArrow=none;html=1;strokeWidth=3;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="c19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;" value="&lt;b&gt;Monitoring stack (Tahap 4)&lt;/b&gt; - satu subsistem aktif per konfigurasi uji" vertex="1">
+          <mxGeometry height="100" width="1200" x="100" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="c22" edge="1" parent="1" source="c19" style="endArrow=none;html=1;strokeWidth=3;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="c21" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" value="&lt;b&gt;gNMI&lt;/b&gt;: gNMIc → Prometheus → Grafana&lt;br&gt;&lt;font color=&quot;#1F5FA8&quot;&gt;paper: 2.3.0 | 2.37.8 | 9.5.2&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;gNMIc dipakai 0.31.4, &lt;/font&gt;&lt;font style=&quot;color: light-dark(rgb(31, 95, 168), rgb(114, 169, 231));&quot;&gt;65 objek, interval 1-20 s&lt;/font&gt;" vertex="1">
+          <mxGeometry height="58" width="360" x="120" y="862" as="geometry" />
+        </mxCell>
+        <mxCell id="c24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" value="&lt;b&gt;SNMP&lt;/b&gt;: Telegraf &amp;#8594; InfluxDB&lt;br&gt;&lt;font color=&quot;#C77700&quot;&gt;1.27.0 | 2.7.1 (pemetaan asumsi M5)&lt;br&gt;polling 5 OID&lt;/font&gt;" vertex="1">
+          <mxGeometry height="58" width="360" x="520" y="862" as="geometry" />
+        </mxCell>
+        <mxCell id="c25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;" value="&lt;b&gt;sFlow&lt;/b&gt;: sFlow-RT (kolektor + Prometheus)&lt;br&gt;&lt;font color=&quot;#1F5FA8&quot;&gt;3.0-1676&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#1F5FA8&quot;&gt;seluruh metrik default SR Linux&lt;/font&gt;" vertex="1">
+          <mxGeometry height="58" width="360" x="920" y="862" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
