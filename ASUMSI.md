@@ -17,3 +17,9 @@
 
 Layanan L2: MAC-VRF mac-vrf-1, VNI 1000, EVI 111, route-target target:100:111.
 Semua nilai di atas adalah keputusan kelompok (paper tidak menyebutnya).
+
+## Environment (Tahap 1)
+
+| Item | Nilai | Alasan | Sumber |
+|---|---|---|---|
+| Socket buffer host (net.core.rmem_max) | 33554432 (32 MB), permanen lewat /etc/sysctl.d/99-rmem.conf | paper II.D menyebut 32 MB tetapi tidak menyebut parameter sysctl-nya | keputusan kelompok (M7) |
