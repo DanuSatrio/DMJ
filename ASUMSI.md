@@ -29,11 +29,4 @@ Semua nilai di atas adalah keputusan kelompok (paper tidak menyebutnya).
 | Item | Nilai | Alasan | Sumber |
 |---|---|---|---|
 | AS overlay iBGP (local-as) | 65100, spine1 route reflector | menghindari masalah next-hop eBGP lewat spine | keputusan kelompok, mengacu lab Nokia [2] |
-| ip-mtu subinterface underlay | 9100 | frame client 9000 B + header VXLAN sekitar 9050 B | keputusan kelompok |
-
-## Tambahan Tahap 3
-
-| Item | Nilai | Alasan | Sumber |
-|---|---|---|---|
-| AS overlay iBGP (local-as) | 65100, spine1 route reflector | menghindari masalah next-hop eBGP lewat spine | keputusan kelompok, mengacu lab Nokia [2] |
 | ip-mtu subinterface underlay | 9100, diatur di startup-config sejak awal | frame client 9000 B + header VXLAN sekitar 9050 B | keputusan kelompok |
